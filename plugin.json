@@ -1,0 +1,15 @@
+{
+  "slug": "cyc-strong_kar",
+  "name": "Strong Kar",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "brand": "CYC",
+  "author": "Alexander Letourneau",
+  "authorEmail": "alex.letourneau@gmail.com",
+  "authorUrl": "http://alexanderletourneau.com/",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "modules": []
+}
