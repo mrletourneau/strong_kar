@@ -3,4 +3,6 @@
 /plugin.so
 /plugin.dylib
 /plugin.dll
+.idea
 .DS_Store
+cmake-build-debug
