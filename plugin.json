@@ -1,5 +1,5 @@
 {
-  "slug": "cyc-strong_kar",
+  "slug": "CYC",
   "name": "Strong Kar",
   "version": "1.0.0",
   "license": "proprietary",
@@ -11,5 +11,12 @@
   "manualUrl": "",
   "sourceUrl": "",
   "donateUrl": "",
-  "modules": []
+  "modules": [
+    {
+      "slug": "cyc-strong_kar",
+      "name": "Strong Kar",
+      "description": "Implementation of the Karplus-Strong algorithm",
+      "tags": ["VCO"]
+    }
+  ]
 }
