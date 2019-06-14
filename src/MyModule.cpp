@@ -1,4 +1,5 @@
 #include "plugin.hpp"
+#include "stdio.h"
 
 
 struct MyModule : Module {
@@ -19,8 +20,13 @@ struct MyModule : Module {
         NUM_LIGHTS
     };
 
+    int samples = 1000;
     float phase = 0.f;
     float blinkPhase = 0.f;
+    float noise [1000];
+    int noisePointer = 0;
+    float previousOutput = 0;
+
 
     MyModule() {
         // Configure the module
@@ -29,9 +35,53 @@ struct MyModule : Module {
         // Configure parameters
         // See engine/Param.hpp for config() arguments
         configParam(PITCH_PARAM, -3.f, 3.f, 0.f, "Pitch", " Hz", 2.f, dsp::FREQ_C4);
+
+        for (int i = 0; i < samples; i++)
+        {
+            noise[i] = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/5.0));
+        }
+    }
+// Python definition of the karplus strong algorithm for reference
+//    def karplus_strong(wavetable, n_samples):
+//        """Synthesizes a new waveform from an existing wavetable, modifies last sample by averaging."""
+//        samples = []
+//        current_sample = 0
+//        previous_value = 0
+//        while len(samples) < n_samples:
+//                wavetable[current_sample] = 0.5 * (wavetable[current_sample] + previous_value)
+//                samples.append(wavetable[current_sample])
+//                previous_value = samples[-1]
+//                current_sample += 1
+//                current_sample = current_sample % wavetable.size
+
+    void onReset() override {
+        for (int i = 0; i < samples; i++)
+        {
+            noise[i] = static_cast <float> (rand()) / (static_cast <float> (RAND_MAX/5.0));
+        }
     }
 
     void process(const ProcessArgs &args) override {
+        noise[noisePointer] = 0.5 * (noise[noisePointer] + previousOutput);
+
+        outputs[SINE_OUTPUT].setVoltage(noise[noisePointer]);
+
+        if (noisePointer == 0)
+        {
+            previousOutput = noise[samples - 1];
+        }
+        else
+        {
+            previousOutput = noise[noisePointer - 1];
+        }
+
+        noisePointer++;
+
+        if (noisePointer >= samples)
+            noisePointer = 0;
+    }
+
+    void deprecatedProcess(const ProcessArgs &args) {
         // Implement a simple sine oscillator
 
         // Compute the frequency from the pitch parameter and input
