@@ -8,4 +8,4 @@ include_directories(src)
 
 add_executable(cyc_strong_kar
     src/plugin.cpp
-    src/plugin.hpp src/MyModule.cpp)
+    src/plugin.hpp src/StrongKar.cpp)

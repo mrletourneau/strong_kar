@@ -2,7 +2,7 @@
 #include "stdio.h"
 
 
-struct MyModule : Module {
+struct StrongKar : Module {
     enum ParamId {
         DAMP_PARAM,
         FREQ_PARAM,
@@ -24,7 +24,7 @@ struct MyModule : Module {
     float previousOutput = 0;
 
 
-    MyModule() {
+    StrongKar() {
         // Configure the module
         config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS);
 
@@ -100,8 +100,8 @@ struct MyModule : Module {
 };
 
 
-struct MyModuleWidget : ModuleWidget {
-    MyModuleWidget(MyModule *module) {
+struct StrongKarWidget : ModuleWidget {
+    StrongKarWidget(StrongKar *module) {
         setModule(module);
         setPanel(APP->window->loadSvg(asset::plugin(pluginInstance, "res/panel.svg")));
 
@@ -110,16 +110,16 @@ struct MyModuleWidget : ModuleWidget {
         addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
         addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-        addParam(createParam<Davies1900hBlackKnob>(Vec(25, 87), module, MyModule::DAMP_PARAM));
-        addParam(createParam<Davies1900hBlackKnob>(Vec(25, 130), module, MyModule::FREQ_PARAM));
+        addParam(createParam<Davies1900hBlackKnob>(Vec(25, 87), module, StrongKar::DAMP_PARAM));
+        addParam(createParam<Davies1900hBlackKnob>(Vec(25, 130), module, StrongKar::FREQ_PARAM));
 
-        addInput(createInput<PJ301MPort>(Vec(25, 186), module, MyModule::TRIGGER_INPUT));
-        addInput(createInput<PJ301MPort>(Vec(25, 156), module, MyModule::PITCH_INPUT));
+        addInput(createInput<PJ301MPort>(Vec(25, 186), module, StrongKar::TRIGGER_INPUT));
+        addInput(createInput<PJ301MPort>(Vec(25, 156), module, StrongKar::PITCH_INPUT));
 
-        addOutput(createOutput<PJ301MPort>(Vec(25, 275), module, MyModule::PLUCK_OUTPUT));
+        addOutput(createOutput<PJ301MPort>(Vec(25, 275), module, StrongKar::PLUCK_OUTPUT));
     }
 };
 
 
 // Define the Model with the Module type, ModuleWidget type, and module slug
-Model *modelMyModule = createModel<MyModule, MyModuleWidget>("cyc-strong_kar");
+Model *modelMyModule = createModel<StrongKar, StrongKarWidget>("cyc-strong_kar");
