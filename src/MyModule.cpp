@@ -10,6 +10,7 @@ struct MyModule : Module {
     };
     enum InputId {
         TRIGGER_INPUT,
+        PITCH_INPUT,
         NUM_INPUTS
     };
     enum OutputId {
@@ -38,10 +39,10 @@ struct MyModule : Module {
 
     void regenerateTable(int frequency, float sampleRate)
     {
-        delete [] noise;
-
+        noisePointer = 0;
         samplesPeriod = sampleRate / frequency;
 
+        delete [] noise;
         noise = new float[samplesPeriod];
 
         for (int i = 0; i < samplesPeriod; i++)
@@ -64,7 +65,7 @@ struct MyModule : Module {
         bool triggered = schmittTrigger.isHigh();
 
         float pitch = params[FREQ_PARAM].getValue();
-        //pitch += inputs[PITCH_INPUT].getVoltage();
+        pitch += inputs[PITCH_INPUT].getVoltage();
         pitch = clamp(pitch, -4.f, 4.f);
         // The default pitch is C4 = 261.6256f
         float freq = dsp::FREQ_C4 * std::pow(2.f, pitch);
@@ -113,6 +114,7 @@ struct MyModuleWidget : ModuleWidget {
         addParam(createParam<Davies1900hBlackKnob>(Vec(25, 130), module, MyModule::FREQ_PARAM));
 
         addInput(createInput<PJ301MPort>(Vec(25, 186), module, MyModule::TRIGGER_INPUT));
+        addInput(createInput<PJ301MPort>(Vec(25, 156), module, MyModule::PITCH_INPUT));
 
         addOutput(createOutput<PJ301MPort>(Vec(25, 275), module, MyModule::PLUCK_OUTPUT));
     }
