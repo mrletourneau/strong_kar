@@ -110,13 +110,13 @@ struct StrongKarWidget : ModuleWidget {
         addChild(createWidget<ScrewSilver>(Vec(RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
         addChild(createWidget<ScrewSilver>(Vec(box.size.x - 2 * RACK_GRID_WIDTH, RACK_GRID_HEIGHT - RACK_GRID_WIDTH)));
 
-        addParam(createParam<Davies1900hBlackKnob>(Vec(25, 87), module, StrongKar::DAMP_PARAM));
-        addParam(createParam<Davies1900hBlackKnob>(Vec(25, 130), module, StrongKar::FREQ_PARAM));
+        addParam(createParam<Davies1900hBlackKnob>(mm2px(Vec(5.659-1.2, 128.5-95.647-9.525-1.2)), module, StrongKar::DAMP_PARAM));
+        addParam(createParam<Davies1900hBlackKnob>(mm2px(Vec(5.659-1.2, 128.5-77.655-9.525-1.2)), module, StrongKar::FREQ_PARAM));
 
-        addInput(createInput<PJ301MPort>(Vec(25, 186), module, StrongKar::TRIGGER_INPUT));
-        addInput(createInput<PJ301MPort>(Vec(25, 156), module, StrongKar::PITCH_INPUT));
+        addInput(createInput<PJ301MPort>(mm2px(Vec(6.086, 128.5-59.454-8.356)), module, StrongKar::TRIGGER_INPUT));
+        addInput(createInput<PJ301MPort>(mm2px(Vec(6.086, 128.5-45.167-8.356)), module, StrongKar::PITCH_INPUT));
 
-        addOutput(createOutput<PJ301MPort>(Vec(25, 275), module, StrongKar::PLUCK_OUTPUT));
+        addOutput(createOutput<PJ301MPort>(mm2px(Vec(6.086, 128.5-30.086-8.356)), module, StrongKar::PLUCK_OUTPUT));
     }
 };
 
