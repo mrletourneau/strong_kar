@@ -2,14 +2,14 @@
   "slug": "CYC",
   "name": "Strong Kar",
   "version": "1.0.0",
-  "license": "proprietary",
+  "license": "MIT",
   "brand": "CYC",
   "author": "Alexander Letourneau",
   "authorEmail": "alex.letourneau@gmail.com",
   "authorUrl": "http://alexanderletourneau.com/",
-  "pluginUrl": "",
+  "pluginUrl": "https://github.com/mrletourneau/strong_kar",
   "manualUrl": "",
-  "sourceUrl": "",
+  "sourceUrl": "https://github.com/mrletourneau/strong_kar",
   "donateUrl": "",
   "modules": [
     {
