@@ -1,4 +1,4 @@
-# StrongKar
+# STRONG KAR
 VCV Rack plugin implementation of the Karplus Strong algorithm
 
 ![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)![Strong Kar](https://github.com/mrletourneau/strong_kar/blob/master/img/glam.png?raw=true)
