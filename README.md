@@ -10,10 +10,10 @@ This module is based on the Karplus Strong algorithm. It works by generating a r
 In the root directory, simply execute `make dist`. See the [VCV Rack Plugin Tutorial](https://vcvrack.com/manual/PluginDevelopmentTutorial.html) for more info.
 
 ## Using
-_Dampening_ controls the decay and dampening speed of the pluck
+`Dampening` controls the decay and dampening speed of the pluck
 
-_Pitch_ controls the pitch of the pluck
+`Pitch` controls the pitch of the pluck
 
-_Trig_ triggers a new pluck
+`Trig` triggers a new pluck
 
-_V/Oct_ controls the pitch via CV
+`V/Oct` controls the pitch via CV
