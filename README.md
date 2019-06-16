@@ -11,6 +11,9 @@ In the root directory, simply execute `make dist`. See the [VCV Rack Plugin Tuto
 
 ## Using
 _Dampening_ controls the decay and dampening speed of the pluck
+
 _Pitch_ controls the pitch of the pluck
+
 _Trig_ triggers a new pluck
+
 _V/Oct_ controls the pitch via CV
