@@ -30,7 +30,7 @@ struct StrongKar : Module {
 
         // Configure parameters
         // See engine/Param.hpp for config() arguments
-        configParam(DAMP_PARAM, .01f, .5f, 0.5f, "Damp", " Hz", 2.f, dsp::FREQ_C4);
+        configParam(DAMP_PARAM, 1.01f, 1.6487f, 1.6488f, "Damp", " Hz", 2.f);
         configParam(FREQ_PARAM, -3.f, 3.f, 0.f, "Pitch", " Hz", 2.f, dsp::FREQ_C4);
 
         noise = new float[1];
@@ -76,9 +76,11 @@ struct StrongKar : Module {
         }
 
 
-        float dampAmount = params[DAMP_PARAM].getValue();
+        float dampAmount = log(params[DAMP_PARAM].getValue());
 
-
+        if (dampAmount > .5)
+            dampAmount = .5;
+        
         noise[noisePointer] = dampAmount * (noise[noisePointer] + previousOutput);
 
         outputs[PLUCK_OUTPUT].setVoltage(noise[noisePointer]);
